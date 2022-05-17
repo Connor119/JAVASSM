@@ -1,49 +1,18 @@
 package com.boshen.pojo;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+//data这个注解可以帮助我们生成get，set，tostring，hashcode，equal等方法
+@Data
+//添加有参构造，注意添加完有参构造之后无参构造会自动的消失
+@AllArgsConstructor
+//在这里添加无参构造
+@NoArgsConstructor
 public class User {
     private int id;
     private String name;
-    private String pwd;
+    private String possword;
 
-    public User() {
-    }
-
-    public User(int id, String name, String pwd) {
-        this.id = id;
-        this.name = name;
-        this.pwd = pwd;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPwd() {
-        return pwd;
-    }
-
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", pwd='" + pwd + '\'' +
-                '}';
-    }
 }

@@ -28,6 +28,6 @@ public class MybatisUtils {
     }
 //    可以使用这个方法获得sqlsession实例化对象
     public static SqlSession getSqlsession(){
-        return sqlSessionFactory.openSession();
+        return sqlSessionFactory.openSession(true);
     }
 }

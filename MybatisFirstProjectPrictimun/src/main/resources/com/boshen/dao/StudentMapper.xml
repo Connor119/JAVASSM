@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boshen.dao.StudentMapper">
+    <select id="getStudents2" resultMap="mymap2">
+        select s.id sid,s.name sname,t.name tname
+        from student s,teacher t
+        where s.tid = t.id
+    </select>
+    <resultMap id="mymap2" type="com.boshen.pojo.Student">
+        <result property="id" column="sid"/>
+        <result property="name" column="sname"/>
+        <association property="teacher" javaType="com.boshen.pojo.Teacher">
+            <result property="name" column="tname"/>
+        </association>
+    </resultMap>
+
+
+
+
+
+
+<!--    这个关联其实就必须说明跟哪个实体类关联，而哪个实体类就是我们type中要写的值-->
+    <resultMap id="studentTeacher" type="com.boshen.pojo.Student">
+<!--        这里面property就是类中对应的属性名，column就是我们的表中的列名-->
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <association property="teacher" column="tid" javaType="com.boshen.pojo.Teacher" select="getTeacherforStudent"/>
+    </resultMap>
+
+    <select id="getStudents" resultMap="studentTeacher">
+        select * from student;
+    </select>
+
+    <select id="getTeacherforStudent" resultType="com.boshen.pojo.Teacher">
+        select * from teacher t where id = #{id}
+    </select>
+</mapper>

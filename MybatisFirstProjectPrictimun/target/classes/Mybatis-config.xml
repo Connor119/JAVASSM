@@ -2,6 +2,13 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+    <typeAliases>
+        <typeAlias alias="User" type="com.boshen.pojo.User"></typeAlias>
+    </typeAliases>
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
@@ -14,7 +21,13 @@
         </environment>
     </environments>
 
+
     <mappers>
         <mapper resource="com/boshen/Dao/mapper.xml"/>
+<!--        <mapper class="com.boshen.dao.UserDao"/>-->
+        <mapper resource="com/boshen/dao/StudentMapper.xml"/>
+        <mapper resource="com/boshen/dao/TeacherMapper.xml"/>
+<!--        <mapper class="com.boshen.dao.StudentMapper"/>-->
+<!--        <mapper class="com.boshen.dao.TeacherMapper"/>-->
     </mappers>
 </configuration>

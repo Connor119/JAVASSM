@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!--在namespace上需要绑定接口地址-->
+<!--鍦╪amespace涓婇渶瑕佺粦瀹氭帴鍙ｅ湴鍧�-->
 <mapper namespace="com.boshen.dao.UserDao">
     <resultMap id="map1" type="User">
         <result column="pwd" property="possword"></result>
@@ -28,7 +28,7 @@
         select * from user where name like #{value};
     </select>
 
-<!--    分页实现-->
+<!--    鍒嗛〉瀹炵幇-->
     <select id="getUserByLimit" parameterType="map" resultType="user">
         select * from user limit #{startIndex},#{pageSize}
     </select>
